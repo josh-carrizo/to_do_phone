@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        #scroll{
+            border:1px solid;
+            height:10rem;
+            width: 30rem;
+            overflow-y:scroll;
+            overflow-x:hidden;
+            padding: 1px;
+        }
+        .icono{
+  
+            height:1rem;
+            width: 1rem;
+   
+        }
+        .margen{
+  
+            height:12rem;
+            width: 30rem;
+            padding: 0rem;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <nav class="navbar navbar-dark bg-dark container-fluid">
+            <a class="navbar-brand col-lg-12 col-md-12 col-sm-12 text-center" href="#">TODO APP</a>
+        </nav>
+    </div>
+    <br>
+    <div class="container margen">
+            <div class="input-group">
+                <textarea id="scroll" class="form-control" aria-label="With textarea"></textarea>
+            </div>
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-dark btn-agregar">
+                    <span class="badge">
+                        <img class="icono text-left" src="agregar.png">
+                    </span>
+                    &nbsp;Agregar
+                </button>
+            </div>
+    </div>
+    <hr>
+    <div id="scroll" class="container margen ">
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Preparar Specs 
+                            </label>
+                    </div>
+                    <span class="badge "><img class="icono text-left borrar" src="trash.png"></span>
+                </li>  
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Preparar Specs
+                            </label>
+                    </div>
+                    <span class="badge "><img class="icono text-left borrar" src="trash.png"></span>
+                </li> 
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque maxime et nemo saepe minima ad numquam temporibus. 
+                            </label>
+                    </div>
+                    <span class="badge "><img class="icono text-left borrar" src="trash.png"></span>
+                </li> 
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                               Preparar Specs 
+                            </label>
+                    </div>
+                    <span class="badge "><img class="icono text-left borrar" src="trash.png"></span>
+                </li>   
+ 
+            </ul>
+    </div>
+    
+
+      
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $('.btn-agregar').on('click',function(){
+            var tarea = $('.form-control').val(); // este es el texto del mensaje
+            if(tarea == ''){
+                return;
+            }
+            var tarea_out =`<li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div class="form-check">
+                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                         <label class="form-check-label" for="defaultCheck1">`
+                                            + tarea + `
+                                         </label>
+                                </div>
+                                <span class="badge "><img class="icono text-left borrar" src="trash.png"></span>
+                            </li>  `;
+        $('.list-group').append(tarea_out);
+        $('.form-control').val('');
+
+        });
+        $(document).on('click','.form-check-input',function(){
+            $('.form-check-input').change(function () {
+            if (this.checked) {
+                $(this).siblings().css("text-decoration","line-through");
+            } else {
+                $(this).siblings().css("text-decoration", "none");
+            }
+            });
+        });                 
+        $(document).on('click','.borrar',function(){
+            $('.borrar').on('click',function(){
+                $(this).parent().parent().remove();
+            });
+        });
+    });
+
+    </script>
+</body>
+</html>
